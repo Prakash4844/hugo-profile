@@ -55,7 +55,6 @@ header .navbar.animate {
     animation: fade-up 0.5s ease-in;
 }
 
-
 /* ToolTip */
 
 .tooltip {
@@ -92,14 +91,13 @@ header .navbar.animate {
     opacity: 0.6;
 }
 
-#hero h2 {
+#hero h1 {
     font-size: clamp(40px, 8vw, 80px);
     color: var(--primary-color) !important;
 }
 
-#hero h3 {
+#hero h2 {
     font-size: clamp(40px, 8vw, 60px);
-    /* color: var(--primary-color) !important; */
     opacity: 0.5;
 }
 
@@ -121,14 +119,9 @@ header .navbar.animate {
     transition: box-shadow 0.3s;
 }
 
-#hero .image img:hover {
-    cursor: pointer;
-}
-
 #hero .image.animate img:hover {
     box-shadow: 0 0 11px rgb(15 80 100 / 20%);
     filter: contrast(1.2);
-    cursor: pointer;
 }
 
 #hero a.btn.social-icon {
@@ -176,7 +169,7 @@ header .navbar.animate {
 #hero .hero-content > a {
     display: inline-block;
     text-decoration: none;
-    color: var(--primary-color) !important;
+    color: var(--text-link-color) !important;
 }
 
 #hero .hero-content > a::after {
@@ -244,7 +237,7 @@ header .navbar.animate {
 #about a {
     display: inline-block;
     text-decoration: none;
-    color: var(--primary-color) !important;
+    color: var(--text-link-color) !important;
 }
 
 #about a::after {
@@ -323,7 +316,7 @@ header .navbar.animate {
     opacity: 0.9;
     display: inline-block;
     text-decoration: none;
-    color: var(--primary-color) !important;
+    color: var(--text-link-color) !important;
 }
 
 #experience a::after {
@@ -358,6 +351,10 @@ header .navbar.animate {
     color: var(--primary-color);
     position: absolute;
     left: 0px;
+}
+
+#experience .experience-container .tab-content .tab-pane .featuredLink img {
+    width: 1.1em;
 }
 
 #experience .experience-container .tab-content .tab-pane .featuredLink a::after {
@@ -433,7 +430,7 @@ header .navbar.animate {
 }
 
 #education .card .card-body .education-content a {
-    color: var(--primary-color) !important;
+    color: var(--text-link-color) !important;
     text-decoration: none;
     opacity: 0.9;
 }
@@ -441,7 +438,7 @@ header .navbar.animate {
 #education .card .card-body > a h6 {
     display: inline-block;
     text-decoration: none;
-    color: var(--primary-color) !important;
+    color: var(--text-link-color) !important;
 }
 
 #education .card .card-body > a h6::after {
@@ -483,17 +480,12 @@ header .navbar.animate {
 }
 
 #achievements .card {
-    cursor: context-menu;
     background-color: var(--secondary-color) !important;
     border-radius: 1rem;
     box-shadow: 0 0 36px rgba(0,0,0,0.1);
     /* transform: translate3d(0, 0, 0); */
     transition: box-shadow .2s linear,opacity .2s linear;
     border: 2px solid transparent;
-}
-
-#achievements a.card {
-    cursor: alias;
 }
 
 #achievements .card h5 {

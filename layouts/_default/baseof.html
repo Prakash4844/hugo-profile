@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ .Site.Language.Lang }}">
 
 <head>
   {{- partial "head.html" . -}}
   {{- block "head" . }} {{- end }}
+
+  <!-- Custom Styles -->
+  {{ if .Site.Params.customCSS }}
+    <link rel="stylesheet" href="{{ .Site.Params.staticPath }}/style.css">
+  {{ end }}
+
   <title>
     {{- block "title" . }} {{- end }}
   </title>

@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{{.Site.Params.staticPath}}/css/single.css">
 
 <!-- fontawesome -->
-<script defer src="{{.Site.Params.staticPath}}/fontawesome-5/all-5.15.4.js"></script>
+<script defer src="{{.Site.Params.staticPath}}/fontawesome-6/all-6.4.2.js"></script>
 {{ end }}
 
 {{ define "title" }}
@@ -19,8 +19,10 @@
           <div class="title mb-5">
             <h1 class="text-center mb-4">{{ .Title }}</h1>
             <div class="text-center">
-              {{ .Params.author }} 
-              <small>|</small>
+              {{ if .Params.author }}
+                {{ .Params.author }}
+                <small>|</small>
+              {{ end }}
               {{ .Date.Format (.Site.Params.datesFormat.article | default "Jan 2, 2006") }}
 
               {{ if or (.Site.Params.singlePages.readTime.enable | default true) (.Params.enableReadingTime) }}
@@ -41,7 +43,7 @@
         </div>
       </div>
       <div class="col-sm-12 col-md-12 col-lg-3">
-        <div class="sticky-sidebar">
+        <div id="stickySideBar" class="sticky-sidebar">
           {{ if .Params.toc | default true}}
           <aside class="toc">
               <h5>
@@ -58,19 +60,26 @@
             <h5>{{ .Site.Params.terms.tags | default "Tags" }}</h5>
             <ul class="tags-ul list-unstyled list-inline">
               {{range .Params.tags}}
-              <li class="list-inline-item"><a href="{{`tags` | absURL}}/{{.| urlize}}" target="_blank">{{.}}</a></li>
+              <li class="list-inline-item"><a href="{{`tags` | absURL}}/{{.| urlize}}"
+                {{ if site.Params.singlePages.tags.openInNewTab | default true }}target="_blank"{{ end }}
+              >{{.}}</a></li>
               {{end}}
             </ul>
           </aside>
           {{end}}
 
-          {{ if .Params.socialShare | default true }}
+          {{ if .Params.socialShare | default .Site.Params.singlePages.socialShare | default true }}
           <aside class="social">
             <h5>{{ .Site.Params.terms.social | default "Social" }}</h5>
             <div class="social-content">
               <ul class="list-inline">
                 <li class="list-inline-item text-center">
-                  <a target="_blank" href="https://twitter.com/share?text={{ .Title }}&url={{ .Site.Params.hostName }}{{ .Permalink | absURL }}">
+                  <a target="_blank" href="https://www.linkedin.com/feed/?shareActive=true&text={{ .Params.description }} {{ .Site.Params.hostName }}{{ .Permalink | absURL }}">
+                    <i class="fab fa-linkedin"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item text-center">
+                  <a target="_blank" href='https://twitter.com/share?text={{ .Title }}&url={{ .Site.Params.hostName }}{{ .Permalink | absURL }}&hashtags={{ delimit .Params.tags "," }}'>
                     <i class="fab fa-twitter"></i>
                   </a>
                 </li>
@@ -124,6 +133,17 @@
   function topFunction() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
+  }
+
+  // To set height of sticky sidebar dynamically
+  let stickySideBarElem = document.getElementById("stickySideBar");
+  let stickyNavBar = {{ .Site.Params.navbar.stickyNavBar.enable | default false }};
+  if(stickyNavBar) {
+    let headerElem = document.getElementById("profileHeader");
+    let headerHeight = headerElem.offsetHeight + 15;
+    stickySideBarElem.style.top = headerHeight + "px";
+  } else {
+    stickySideBarElem.style.top = "50px";
   }
 </script>
 

@@ -33,7 +33,7 @@
 #single .page-content a {
     display: inline-block;
     text-decoration: none;
-    color: var(--primary-color) !important;
+    color: var(--text-link-color) !important;
 }
 
 #single .page-content a::after {
@@ -52,7 +52,7 @@
 }
 
 #single .page-content h1, #single .page-content h2, #single .page-content h3, #single .page-content h4, #single .page-content h5, #single .page-content h6 {
-    color: var(--primary-color) !important;
+    color: var(--text-link-color) !important;
     margin-bottom: 0.7em;
     opacity: 0.9;
 }
@@ -163,10 +163,19 @@
 
 #single .sticky-sidebar {
   position: sticky;
-  top: 50px;
+}
+
+#single .sticky-sidebar ::-webkit-scrollbar {
+    height: 0px;
+    width: 8px;
 }
 
 /* Tags */
+#single aside.tags {
+    max-height: 35vh;
+    overflow: scroll;
+}
+
 #single aside.tags h5 {
     margin: .7em 0;
     margin-bottom: 1em;
@@ -174,16 +183,16 @@
 
 
 #single aside.tags ul.tags-ul li a {
-    padding: 10px 15px;
+    padding: 5px 10px;
     margin-bottom: 2px;
-    border-radius: 8px;
+    border-radius: 10px;
     background-color: var(--background-color);
     text-decoration: none;
-    color: var(--text-color);
+    color: var(--text-link-color) !important;
 }
 
 #single aside.tags ul.tags-ul li {
-    margin-bottom: 1.2rem;
+    margin-bottom: 0.8rem;
 }
 
 #single aside.tags ul.tags-ul li:hover {
@@ -194,6 +203,8 @@
 /*TOC*/
 #single aside.toc {
     padding: .7rem 1rem;
+    max-height: 50vh;
+    overflow: scroll;
 }
 
 #single aside.toc h5 {
@@ -212,7 +223,7 @@
 #single aside.toc .toc-content ol li a, #single aside.toc .toc-content ul li a {
     font-size: 16px;
     text-decoration: none;
-    color: var(--text-color);
+    color: var(--text-link-color) !important;
     opacity: 0.9;
 }
 
@@ -250,7 +261,7 @@
 #single aside.social .social-content ul li a {
     border: 1px solid var(--primary-color);
     padding: .7rem;
-    color: var(--text-color);
+    color: var(--text-link-color) !important;
     border-radius: 10px;
     overflow: hidden;
 }
@@ -262,7 +273,7 @@
 
 #single aside.social .social-content ul li:hover a {
     opacity: .8;
-    color: var(--primary-color);
+    color: var(--text-link-color) !important;
 }
 
 /* Top scroll */
